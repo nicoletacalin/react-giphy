@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import giphy from 'giphy-api';
 import SearchBar from './search_bar.jsx';
 import Gif from './gif.jsx';
-import GifList from './gif_list.jsx'
+import GifList from './gif_list.jsx';
 
-const GIPHY_API_KEY = 'YGiomHSm53r8MXViEq9IqjsxtUtg2Olj';
+
+const GIPHY_API_KEY = "7ZGEpRGzH3xHH45eZTNMDZ9x05wlRCzV";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class App extends Component {
   search(query) {
     const giphEndpoint = `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${query}&limit=10`
     fetch(giphEndpoint).then(response => response.json()).then((data) => {
+      console.log("data",data)
       const gifs = data.data.map(giph => giph.id)
       this.setState({
         gifs: gifs
